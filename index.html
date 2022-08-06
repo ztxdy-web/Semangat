@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIAPA TAU AKU</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.22.0/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen">
+    <div class="flex justify-center content-center items-center h-full flex-col">
+      <div class="card w-96 bg-neutral text-neutral-content my-auto shadow-xl">
+        <div class="card-body items-center text-center">
+          <p id="pertanyaan" class="text-xl">Masukan Nama Kamu</p>
+          <input id="input1" type="text" placeholder="" class="input mt-2 input-bordered w-full max-w-xs text-black" />
+          <div class="card-actions justify-end">
+            <button id="btn" onclick="inputNama()" class="btn btn-primary px-10 mt-2">GO</button>
+          </div>
+        </div>
+        <progress id="loading" class="progress w-56 mx-auto -mt-5 border-0 mb-5"></progress>
+      </div>
+    </div>
+    <script>
+      let nilai = 0;
+
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      function loading() {
+        let load = document.getElementById("loading");
+        load.classList.toggle("bg-white");
+      }
+
+      function clearInput() {
+        document.getElementById("input1").value = "";
+      }
+
+      async function inputNama() {
+        loading();
+        await sleep(1000);
+        let btn = document.getElementById("btn");
+        let isi = document.getElementById("input1").value;
+        let pertanyaan = document.getElementById("pertanyaan");
+        pertanyaan.innerText = `Hallo ${isi}, Kenalin aku Zidan salam kenal ya !!! Makasih ya udh klik linknya 😄`;
+        clearInput();
+        await sleep(5000);
+        pertanyaan.innerText = `Sekarang aku mau main sama kamu, aku mau tau seberapa tau sih kamu sama aku....`;
+        await sleep(5000);
+        pertanyaan.innerText = `Pertama kamu bisa tebak ga makanan kesukaan aku apa ?`;
+        btn.setAttribute("onclick", "inputTanya1()");
+        loading();
+      }
+
+      async function inputTanya1() {
+        loading();
+        let isi = document.getElementById("input1").value;
+        if (isi == "Indomie" || isi == "Mie" || isi == "mie" || isi == "indomie") {
+          nilai += 1;
+          pertanyaan.innerText = `Bener banget makanan kesukaan aku itu ${isi}`;
+          await sleep(3000);
+          pertanyaan.innerText = `Kamu sudah menjawab benar sebanyak ${nilai} kali`;
+          await sleep(3000);
+        } else {
+          pertanyaan.innerText = `Yahh sayang banget kamu ga pernah makan sama aku ya ?`;
+          await sleep(3000);
+        }
+        clearInput();
+        pertanyaan.innerText = `Pertanyaan kedua kira kira kamu tau ga hobi aku sekarang apa ?`;
+        btn.setAttribute("onclick", "inputTanya2()");
+        loading();
+      }
+
+      async function inputTanya2() {
+        loading();
+        let isi = document.getElementById("input1").value;
+        if (isi == "Ngoding" || isi == "Coding" || isi == "coding" || isi == "ngoding") {
+          nilai += 1;
+          pertanyaan.innerText = `Kok kamu tau kalo sekarang aku lagi seneng ${isi}`;
+          await sleep(3000);
+          pertanyaan.innerText = `Kamu sudah menjawab benar sebanyak ${nilai} kali`;
+          await sleep(3000);
+        } else {
+          pertanyaan.innerText = `Yahh kamu salah lain kali jawab yang bener ya `;
+          await sleep(3000);
+        }
+        clearInput();
+        pertanyaan.innerText = `Pertanyaan ketiga kamu tau ga tanggal lahir aku ?`;
+        btn.setAttribute("onclick", "inputTanya3()");
+        loading();
+      }
+
+      async function inputTanya3() {
+        loading();
+        let isi = document.getElementById("input1").value;
+
+        if (isi == "231101" || isi == "23 November 2001" || isi == "23 november 2001") {
+          nilai += 1;
+          pertanyaan.innerText = `Wah kamu sampai tau tanggal lahir aku 😚`;
+          await sleep(3000);
+          pertanyaan.innerText = `Kamu sudah menjawab benar sebanyak ${nilai} kali`;
+          await sleep(3000);
+        } else {
+          pertanyaan.innerText = `Yahh aku di lupain mulu`;
+          await sleep(3000);
+        }
+        clearInput();
+        pertanyaan.innerText = `Pertanyaan keempat kamu tau ga aku lagi sibuk apa sekarang ?`;
+        btn.setAttribute("onclick", "inputTanya4()");
+        loading();
+      }
+
+      async function inputTanya4() {
+        loading();
+        let isi = document.getElementById("input1").value;
+        if (isi == "Ngajar" || isi == "Jadi guru" || isi == "Guru") {
+          nilai += 1;
+          pertanyaan.innerText = `Wihhh kamu juga tau aku lagi jadi guru 🤗`;
+          await sleep(3000);
+          pertanyaan.innerText = `Kamu sudah menjawab benar sebanyak ${nilai} kali`;
+          await sleep(3000);
+        } else {
+          pertanyaan.innerText = `Hehehe aku sekarang lagi sibukkk`;
+          await sleep(3000);
+        }
+        clearInput();
+        pertanyaan.innerText = `Pertanyaan kelima kamu tau ga aku sukanya apaa ?`;
+        btn.setAttribute("onclick", "inputTanya5()");
+        loading();
+      }
+
+      async function inputTanya5() {
+        loading();
+
+        let isi = document.getElementById("input1").value;
+        if (isi == "Catur" || isi == "Gusty" || isi == "gusty") {
+          nilai += 1;
+          pertanyaan.innerText = `HEHEHE KOK KAMU BISA TAU KALO AKU SUKA ${isi}`;
+          await sleep(3000);
+          pertanyaan.innerText = `Kamu sudah menjawab benar sebanyak ${nilai} kali`;
+          await sleep(3000);
+        } else {
+          pertanyaan.innerText = `Wahhh kamu bukan orang yang aku carii`;
+          await sleep(3000);
+        }
+        clearInput();
+
+        if (nilai > 2) {
+          pertanyaan.innerText = `Wahh kamu jawaban kamu benar ${nilai} kali, ternyata kamu cukup tau aku gmn ya ehehe`;
+          await sleep(3000);
+          pertanyaan.innerText = `Makasihh bangett udh mau nemenin aku hehe`;
+          await sleep(3000);
+          pertanyaan.innerText = `Sekarang aku mau kamu jawab pertanyaan terakhir dari aku`;
+          await sleep(3000);
+          loading();
+          pertanyaan.innerText = `Pertanyaannya apa tanggal paling spesial aku ?..`;
+          btn.setAttribute("onclick", "closing()");
+        } else {
+          pertanyaan.innerText = `Yahh kamu cuma bisa jawab ${nilai} kali benar, kamu belum cukup tau sama aku !!!`;
+          loading();
+          await sleep(3000);
+          location.reload();
+          return;
+        }
+      }
+
+      async function closing() {
+        let isi = document.getElementById("input1");
+        let btn = document.getElementById("btn");
+        if (isi.value == "281117" || isi.value == "28 November 2017" || isi.value == "28 november 2017") {
+          pertanyaan.innerText = `WAHHH KAMU BENARR KAMU PASTI GUSTY KESAYANGAN AKU KAN`;
+          isi.classList.add("hidden");
+          btn.classList.add("hidden");
+          await sleep(3000);
+          pertanyaan.innerText = `Aku mau ngucapin terimakasih udh selalu ada untuk aku, terimakasih udh selalu nemenin aku dari 2017 higga sekarang. Aku sayang banget sama kamu, kamu jangan takut kehilangan aku yaa. Aku bakal selalu berusaha buat bahagiain kamu, kamu juga jangan ngambekk mulu yaa heheehe 😍😍😍`;
+          await sleep(10000);
+          pertanyaan.innerText = `TERIMAKASIHH AYANGGG ❤❤❤❤❤❤❤`;
+        }
+      }
+    </script>
+  </body>
+</html>
